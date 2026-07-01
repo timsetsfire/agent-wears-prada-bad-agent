@@ -8,8 +8,11 @@ from deepagents.backends import LocalShellBackend
 from dotenv import load_dotenv
 from langchain_core.messages import AIMessage, HumanMessage
 from langchain_openai import ChatOpenAI
+from tracing import Tracing
 
 load_dotenv(override=True)
+
+session_tracing = Tracing(project_name="agent-wears-prada-bad-agent")
 
 curr_dir = Path(__file__).resolve().parent
 
