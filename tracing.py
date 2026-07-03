@@ -43,13 +43,13 @@ class Tracing(object):
             # traces_endpoint = os.environ["OTEL_EXPORTED_OTLP_TRACES_ENDPOINT"]
             # traces_endpoint = _otlp_traces_endpoint(client.domain)
             traces_endpoint = "https://app.datarobot.com/otel/v1/traces"
-            # otel_exporter_otlp_headers = dict([header.split("=") for header in os.environ["OTEL_EXPORTER_OTLP_HEADERS"].split(",")])
-            # headers = {"Authorization": f"Bearer {api_key}", **otel_exporter_otlp_headers}
-            headers = {
-                "Authorization": f'Bearer {os.environ["DATAROBOT_MTS_API_TOKEN"]}',
-                "X-DataRobot-Entity-Id": "deployment-6a0716bf12c55b0ff377422b",
-                "X-DataRobot-Api_key": os.environ["DATAROBOT_MTS_API_TOKEN"],
-            }
+            otel_exporter_otlp_headers = dict([header.split("=") for header in os.environ["OTEL_EXPORTER_OTLP_HEADERS"].split(",")])
+            headers = {"Authorization": f"Bearer {api_key}", **otel_exporter_otlp_headers}
+            # headers = {
+            #     "Authorization": f'Bearer {os.environ["DATAROBOT_MTS_API_TOKEN"]}',
+            #     "X-DataRobot-Entity-Id": "deployment-6a0716bf12c55b0ff377422b",
+            #     "X-DataRobot-Api_key": os.environ["DATAROBOT_MTS_API_TOKEN"],
+            # }
             
             # Set up tracing (your existing code)
             tracer_provider = register(
@@ -82,7 +82,7 @@ class Tracing(object):
                 print(e)
                 print("====")
                 print("likely running locally.  setting up tracing to land in phoenix app running on datarobot")
-                api_key = os.environ["DATAROBOT_MTS_API_TOKEN"]
+                api_key = os.environ["DATAROBOT_API_TOKEN"]
                 tracer_provider = register(
                     # project_name=project_name,
                     set_global_tracer_provider=False,    
