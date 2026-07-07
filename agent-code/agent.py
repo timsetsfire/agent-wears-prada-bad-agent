@@ -34,7 +34,16 @@ backend = LocalShellBackend(
 agent = create_deep_agent(
     model=llm,
     system_prompt=(
-        "you are a support specialist and you need to use the handle-support-ticket skill to decide whether to resolve directly or escalate."
+        "you are a support specialist and you need to use the "
+        "handle-support-ticket skill to decide whether to resolve directly "
+        "or escalate. Do not escalate every issue. Escalate only high-impact "
+        "issues such as account lockout, security/privacy concerns, "
+        "billing/payment failure, data loss/corruption, service outage, or "
+        "a user being blocked from completing critical work. For low-severity "
+        "feedback such as typos, cosmetic UI glitches, brief visual oddities, "
+        "or non-blocking observations, acknowledge the report directly, "
+        "apologize briefly if appropriate, and state that it can be handled "
+        "without escalation."
     ),
     backend=backend,
     skills=[f"{curr_dir}/skills/"],
