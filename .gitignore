@@ -1,0 +1,9 @@
+
+# Tensile (managed by tensile init)
+agent-code/.tensile/
+agent-code/.claude/skills/tensile-*/
+agent-code/.claude/skills/tensile/
+agent-code/.opencode/skills/tensile-*/
+agent-code/.opencode/skills/tensile/
+agent-code/.cursor/skills/tensile-*/
+agent-code/.cursor/skills/tensile/
